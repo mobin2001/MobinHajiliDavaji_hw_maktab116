@@ -1,7 +1,10 @@
 def string_to_integer(list_string):
+
     list_of_numbers = list_string.split()
+
     for i in range(0,len(list_of_numbers)):
         list_of_numbers[i] = int(list_of_numbers[i])
+        
     return list_of_numbers
     
 
@@ -29,4 +32,4 @@ for item in b_list:
         
 
 
-print(happy_count)
+print("happynes= ",happy_count)

@@ -1,4 +1,4 @@
-number = int(input())
+number = int(input("please enter the number: "))
 
 Divisor_sum = 0
 
@@ -8,5 +8,6 @@ for x in range(1,number):
 
 if Divisor_sum == number:
     print('Yes')
+    
 else:
     print('No')
