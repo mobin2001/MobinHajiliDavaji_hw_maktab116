@@ -23,10 +23,12 @@ b_list = string_to_integer(B_collection)
 happy_count = 0
 
 for item in a_list:
+
     if item in z_list:
         happy_count += 1
 
 for item in b_list:
+    
     if item in z_list:
         happy_count -= 1
         
