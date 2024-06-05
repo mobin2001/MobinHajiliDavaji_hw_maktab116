@@ -18,5 +18,4 @@ while power_of_2 == '':
     elif power_2 > number:
         power_of_2 = f'{number} is not a power of 2'
     
-
 print(power_of_2)

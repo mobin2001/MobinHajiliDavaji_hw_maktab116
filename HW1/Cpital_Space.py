@@ -2,7 +2,9 @@ import re
 
 def Capital_space(letter):
     capital_string_list = list()
+
     capital_string_list = re.findall('[A-Z][^A-Z]*', Entrance)
+
     capital_space_string = ''
 
     for item in capital_string_list:
