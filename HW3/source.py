@@ -4,6 +4,23 @@ from statistics import mean
 from collections import Counter
 import operator
 
+def write_in_csv(input_file_name):
+    with open('E:/python/grades.csv', 'w') as fout:
+        data = '''mandana,5,7,3,15
+hamid,3,9,4,20,9,1,8,16,0,5,2,4,7,2,1
+sina,19,10,19,6,8,14,3
+sara,0,5,20,14
+soheila,13,2,5,1,3,10,12,4,13,17,7,7
+ali,1,9
+sarvin,0,16,16,13,19,2,17,8
+mobin,3,15,7,20,20'''
+        list_header_data = data.split('\n')
+        print(list_header_data)
+        for item in list_header_data:
+            fout.write(item+'\n',)
+        fout.close
+
+write_in_csv('E:/python/grades.csv')
 
 def calculate_averages(input_file_name, output_file_name):
     with open(input_file_name, newline = '') as fin:
@@ -44,7 +61,6 @@ def calculate_sorted_averages(input_file_name, output_file_name):
         for x in range (0,len(sorted_dicts)-1):
             
             if sorted_dicts[x][1] == sorted_dicts[x+1][1]:
-                print(sorted_dicts[x])
                 if sorted_dicts[-2] == sorted_dicts[x]:
                     sortt = sorted(sorted_dicts[x:], key=lambda x: (x[0]))
                     del sorted_dicts[x:x+2]
