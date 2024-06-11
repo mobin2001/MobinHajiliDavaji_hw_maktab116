@@ -71,13 +71,13 @@ def calculate_sorted_averages(input_file_name, output_file_name):
                 nomarat = sorted(nomarat)
                 avrage[name] = mean(nomarat)
 
-        sorted_dict = {}
+        sorted_dict = OrderedDict()
         sorted_keys = sorted(avrage,key = avrage.get)
-
+        
         for w in sorted_keys:
 
             sorted_dict[w] = avrage[w]
-
+        sorted_dict
         sorted_dicts = list(sorted_dict.items())
         
         for x in range (0,len(sorted_dicts)-1):
@@ -123,7 +123,7 @@ def calculate_three_best(input_file_name, output_file_name):
         k = Counter(avrage)
         print(k)
         high = list(k.most_common(3))
-        print(high)
+        
         if high[0][1] == high[1][1]:
             x = high.pop()
             high = sorted(high, key=operator.itemgetter(0))
@@ -159,9 +159,9 @@ def calculate_three_worst(input_file_name, output_file_name):
 
                 nomarat.append(float(item))
             average_nomarat.append(mean(nomarat))
+
         average_nomarat.sort()
             
-
         with open(output_file_name, 'w', newline='') as fout:
 
             writer = csv.writer(fout)
@@ -188,8 +188,8 @@ def calculate_average_of_averages(input_file_name, output_file_name):
                 nomarat = sorted(nomarat)
                 avrage[name] = mean(nomarat)
 
-        javab = [0]
-        javab[0] = mean(avrage.values())
+        
+        javab = [mean(avrage.values())]
 
         with open(output_file_name, 'w', newline='') as fout:
 
