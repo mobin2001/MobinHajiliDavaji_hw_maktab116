@@ -121,7 +121,7 @@ def calculate_three_best(input_file_name, output_file_name):
                 avrage[name] = mean(nomarat)
 
         k = Counter(avrage)
-        print(k)
+        
         high = list(k.most_common(3))
         
         if high[0][1] == high[1][1]:

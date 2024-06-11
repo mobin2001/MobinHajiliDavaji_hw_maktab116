@@ -4,7 +4,7 @@ import logging
 def sed(input_file_name, output_file_name,pattern_string,replacemetn_string):
 
     csv_reader = None
-    
+
     try:
         with open(input_file_name, 'r', newline = '') as fin:
 
@@ -21,7 +21,7 @@ def sed(input_file_name, output_file_name,pattern_string,replacemetn_string):
                 #fout.write('\n')
 
     except IOError:
-        logging.exception('')   #UnicodeDecodeError
+        logging.exception('')
 
     if not csv_reader:
         raise ValueError('No data available')
