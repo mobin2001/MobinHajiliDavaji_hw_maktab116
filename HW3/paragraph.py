@@ -15,13 +15,14 @@ for item in list_of_paragraph:
 list_three_top = list(dict_of_paragraph.items())
 
 list_three_top.sort(key = lambda x: x[1], reverse= True)
-
+print(list_three_top)
 list_of_words = []
+count = []
 
 for x in range(3):
     list_of_words.append(list_three_top[x][0])
-
-print(list_of_words)
+    count.append(list_three_top[x][1])
+print('Most Frequent Word(s): ',list_of_words,'\nFrequence: ',count[0])
 
 
 

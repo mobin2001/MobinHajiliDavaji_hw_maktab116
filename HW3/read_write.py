@@ -1,6 +1,6 @@
 import csv
 
-def read_and_write(input_file_name, output_file_name,pattern_string,replacemetn_string):
+def sed(input_file_name, output_file_name,pattern_string,replacemetn_string):
 
     with open(input_file_name, newline = '') as fin:
 
@@ -35,4 +35,4 @@ def read_and_write(input_file_name, output_file_name,pattern_string,replacemetn_
 
             fout.close
 
-read_and_write('E:/python/gradess.csv','E:/python/averages.csv','mandana','maryam')
+sed('E:/python/gradess.csv','E:/python/averages.csv','mandana','maryam')
