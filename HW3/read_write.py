@@ -1,38 +1,38 @@
 import csv
+import logging
 
 def sed(input_file_name, output_file_name,pattern_string,replacemetn_string):
+    csv_reader = None
+    try:
+        with open(input_file_name, 'r', newline = '') as fin:
 
-    with open(input_file_name, newline = '') as fin:
+            csv_reader = fin.read()
 
-        csv_reader = csv.reader(fin)
+            with open(output_file_name, 'w', newline='') as fout:
+
+                # for item in csv_reader:
+
+                #     row = ''
+                #     print(item)
+                #     for x in range(len(item)):
+
+                #         row += item
+                #         row += ','
+                #         if pattern_string in row:
+                #             row.replace(pattern_string,replacemetn_string)
+
+                #     fout.writelines(row[:-1])
+                if pattern_string in csv_reader:
+                    csv_reader = csv_reader.replace(pattern_string,replacemetn_string)
+
+                fout.write(csv_reader)
+                fout.close
+                #fout.write('\n')
+    except IOError:
+        logging.exception('')   #UnicodeDecodeError
+    if not csv_reader:
+        raise ValueError('No data available')
+
         
-        list_data = list()
 
-        for row in csv_reader:
-            
-            list_data.append(row)
-
-        with open(output_file_name, 'w', newline='') as fout:
-
-            for item in list_data:
-
-                row = ''
-
-                for x in range(len(item)):
-
-                    if pattern_string != item[x]:
-                        row += item[x]
-                        row += ','
-
-                    elif pattern_string == item[x]:
-
-                        
-                        row += item[x].replace(item[x],replacemetn_string)
-                        row += ','
-
-                fout.write(row[:-1])
-                fout.write('\n')
-
-            fout.close
-
-sed('E:/python/gradess.csv','E:/python/averages.csv','mandana','maryam')
+sed('E:/python/input.csv','E:/python/averages.csv','5','10')
