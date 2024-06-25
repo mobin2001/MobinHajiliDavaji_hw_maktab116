@@ -7,7 +7,7 @@ from collections import OrderedDict
 
 def write_in(input_file_name):
 
-    with open('E:/python/grades.csv', 'w') as fout:
+    with open(input_file_name, 'w') as fout:
 
         data = '''mandana,5,7,3,15
 hamid,3,9,4,20,9,1,8,16,0,5,2,4,7,2,1
@@ -15,7 +15,9 @@ sina,19,10,19,6,8,14,3
 sara,0,5,20,14
 soheila,13,2,5,1,3,10,12,4,13,17,7,7
 ali,1,9
-sarvin,0,16,16,13,19,2,17,8'''
+sarvin,0,16,16,13,19,2,17,8
+hosein,16.5
+mona,16.5'''
 
         list_data = data.split('\n')
         
@@ -25,7 +27,7 @@ sarvin,0,16,16,13,19,2,17,8'''
 
         fout.close
 
-write_in('E:/python/grades.csv')
+write_in('E:/HW/HW3/grades.csv')
 
 def calculate_averages(input_file_name, output_file_name):
 
@@ -53,7 +55,7 @@ def calculate_averages(input_file_name, output_file_name):
             writer.writerows(javabb)
             fout.close
 
-calculate_averages('E:/python/grades.csv','E:/python/averages.csv')
+calculate_averages('E:/HW/HW3/grades.csv','E:/HW/HW3/averages.csv')
 
 def calculate_sorted_averages(input_file_name, output_file_name):
 
@@ -102,7 +104,7 @@ def calculate_sorted_averages(input_file_name, output_file_name):
             writer.writerows(sorted_dicts)
             fout.close
 
-calculate_sorted_averages('E:/python/grades.csv','E:/python/sorted_averages.csv')
+calculate_sorted_averages('E:/HW/HW3/grades.csv','E:/HW/HW3/sorted_averages.csv')
 
 def calculate_three_best(input_file_name, output_file_name):
 
@@ -142,7 +144,7 @@ def calculate_three_best(input_file_name, output_file_name):
             writer.writerows(high)
             fout.close
 
-calculate_three_best('E:/python/grades.csv','E:/python/best_averages.csv')
+calculate_three_best('E:/HW/HW3/grades.csv','E:/HW/HW3/best_averages.csv')
 
 def calculate_three_worst(input_file_name, output_file_name):
     
@@ -169,7 +171,7 @@ def calculate_three_worst(input_file_name, output_file_name):
                 writer.writerow([average_nomarat[x]])
             fout.close()
 
-calculate_three_worst('E:/python/grades.csv','E:/python/worst_averages.csv')
+calculate_three_worst('E:/HW/HW3/grades.csv','E:/HW/HW3/worst_averages.csv')
 
 def calculate_average_of_averages(input_file_name, output_file_name):
 
@@ -197,4 +199,4 @@ def calculate_average_of_averages(input_file_name, output_file_name):
             writer.writerows(map(lambda x: [x], javab))
             fout.close()
 
-calculate_average_of_averages('E:/python/grades.csv','E:/python/average_averages.csv')
+calculate_average_of_averages('E:/HW/HW3/grades.csv','E:/HW/HW3/average_averages.csv')

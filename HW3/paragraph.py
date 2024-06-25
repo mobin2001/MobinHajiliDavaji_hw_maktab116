@@ -21,7 +21,7 @@ def find_most_frequent_words(input_paragraph):
     for x in range(3):
         list_of_frequent_words.append(list_of_words[x][0])
         count.append(list_of_words[x][1])
-    return list_of_frequent_words,count[0]
+    return list_of_frequent_words,count
 
 
 

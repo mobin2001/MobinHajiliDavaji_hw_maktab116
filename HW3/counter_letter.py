@@ -1,9 +1,9 @@
-my_string = input()
+my_string = 'www.google.com'
 
-dict_counter = dict()
+string_counter = dict()
 
 for letter in my_string:
 
-    dict_counter[letter] = dict_counter.get(letter, 0) + 1
+    string_counter[letter] = string_counter.get(letter, 0) + 1
 
-print(dict_counter)
+print(string_counter)

@@ -26,4 +26,4 @@ def sed(input_file_name, output_file_name,pattern_string,replacemetn_string):
     if not csv_reader:
         raise ValueError('No data available')
 
-sed('E:/python/input.csv','E:/python/averages.csv','5','10')
+sed('E:/python/input.csv','E:/HW/HW3/output.csv','mandana','maryam')
