@@ -19,7 +19,7 @@ class User:
         if name != '' and name not in cls.users_dict:
             cls.username = name
         else:
-            return print('error name value is empty or avalible')
+            return print('Error name value is empty or Its already exists')
         if len(passwd) < 6:
             return print('length should be at least 6')
             val = False
@@ -81,8 +81,9 @@ class User:
 
     @staticmethod
     def changepassword(username,prev_pass,passwd,confirm_new_pass):
+        
         SpecialSym =['$', '@', '#', '%']
-        val = True
+        
         if len(passwd) < 6:
             return print('length should be at least 6')
             

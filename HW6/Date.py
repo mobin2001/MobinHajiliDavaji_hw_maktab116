@@ -4,7 +4,9 @@ import datetime
 
 
 class Date:
+
     date = datetime.date.today()
+    
     def __init__(self):
         pass
 
