@@ -18,7 +18,7 @@ class User:
         else:
             return print('error name value is empty')
         if len(passwd) < 6:
-            print('length should be at least 6')
+            return print('length should be at least 6')
             val = False
          
         if len(passwd) > 20:
@@ -76,7 +76,7 @@ class User:
         SpecialSym =['$', '@', '#', '%']
         val = True
         if len(passwd) < 6:
-            print('length should be at least 6')
+            return print('length should be at least 6')
             
          
         if len(passwd) > 20:
