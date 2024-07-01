@@ -1,6 +1,6 @@
-class User:
+import uuid
 
-    Id = 0
+class User:
 
     users_dict = {}
 
@@ -10,20 +10,44 @@ class User:
         self.phonenumber = phone_number
 
     @classmethod
-    def get_info(cls,name,passw,phone):
+    def get_info(cls,name,passwd,phone):
+        SpecialSym =['$', '@', '#', '%']
+        val = True
         if name != '':
             cls.username = name
         else:
-            print('error name value is empty')
-        if len(passw) >= 4:
-            cls.__password = passw
-        else:
-            return print('error password must be at least 5 characters')
+            return print('error name value is empty')
+        if len(passwd) < 6:
+            print('length should be at least 6')
+            val = False
+         
+        if len(passwd) > 20:
+            return print('length should be not be greater than 8')
+            val = False
+         
+        if not any(char.isdigit() for char in passwd):
+            return print('Password should have at least one numeral')
+            val = False
+         
+        if not any(char.isupper() for char in passwd):
+            return print('Password should have at least one uppercase letter')
+            val = False
+         
+        if not any(char.islower() for char in passwd):
+            return print('Password should have at least one lowercase letter')
+            val = False
+         
+        if not any(char in SpecialSym for char in passwd):
+            return print('Password should have at least one of the symbols $@#')
+            val = False
+        if val:
+            cls.__password = passwd
+        
         if phone == '':
             cls.phonenumber = None
         else:
             cls.phonenumber = phone
-        cls.users_dict[name] = [passw,phone,cls.Id + 1]
+        cls.users_dict[name] = [passwd,phone,str(uuid.uuid5(uuid.NAMESPACE_DNS,name))]
 
     @classmethod
     def check_user_pass(cls,name,pasw):
@@ -36,7 +60,7 @@ class User:
     
     @classmethod
     def print_user_info(cls,name):
-        return (name,cls.users_dict[name][1] , cls.users_dict[name][2]).__str__()
+        return ((name,cls.users_dict[name][1] , cls.users_dict[name][2]).__str__())
     
     @classmethod
     def rename(cls,prevusername,username,phone):
@@ -48,10 +72,35 @@ class User:
             print('username is not confirmed')
 
     @staticmethod
-    def changepassword(username,prev_pass,new_pass,confirm_new_pass):
+    def changepassword(username,prev_pass,passwd,confirm_new_pass):
+        SpecialSym =['$', '@', '#', '%']
+        val = True
+        if len(passwd) < 6:
+            print('length should be at least 6')
+            
+         
+        if len(passwd) > 20:
+            return print('length should be not be greater than 8')
+            
+         
+        if not any(char.isdigit() for char in passwd):
+            return print('Password should have at least one numeral')
+            
+         
+        if not any(char.isupper() for char in passwd):
+            return print('Password should have at least one uppercase letter')
+            
+         
+        if not any(char.islower() for char in passwd):
+            return print('Password should have at least one lowercase letter')
+            
+         
+        if not any(char in SpecialSym for char in passwd):
+            return print('Password should have at least one of the symbols $@#')
+            
         if User.users_dict[username][0] == prev_pass:
-            if new_pass == confirm_new_pass:
-                User.users_dict[username][0] = new_pass
+            if passwd == confirm_new_pass:
+                User.users_dict[username][0] = passwd
             else:
                 print('new_password not match with confirm')
         else:
@@ -60,6 +109,7 @@ class User:
 
 while True:
     operaton = input("enter 0 for Exit and 1 for signup 2 for sigh in : ")
+    
     if operaton == '1':
         info = input("enter Username and passpord please(password at least 4 char): ").split()
         phone_number = input("please enter your phone number: ")
@@ -99,4 +149,6 @@ while True:
 
     elif operaton != '1' or operaton != '0':
         print('wrong input!!!')
+
+print(User.users_dict)
 
