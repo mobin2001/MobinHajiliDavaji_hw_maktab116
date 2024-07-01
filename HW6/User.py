@@ -114,7 +114,6 @@ class User:
                 print('new_password not match with confirm')
         else:
             print('last password is not correct')
-        
 
 while True:
 
@@ -122,13 +121,13 @@ while True:
     
     if operaton == '1':
         info_username = input("enter Username please: ")
-        info_password = input("enter password please(at least 6 char): ")
+        info_password = getpass.getpass('enter password please: ')
         phone_number = input("please enter your phone number(optional): ")
         User.get_info(info_username,info_password,phone_number)
 
     elif operaton == '2':
         username = input('enter username for log in please: ')
-        password = input('enter your password for log in please:')
+        password = getpass.getpass('enter password please: ')
         operaton_2 =  User.check_user_pass(username,password)
 
         if operaton_2 == True:
@@ -143,9 +142,9 @@ while True:
                 User.rename(username,new_username,phone)
 
             elif operaton_3 == '3':
-                last_password = input("enter your last password: ")
-                new_password = input("enter new pass:")
-                conferm_new_password = input("confirm password: ")
+                last_password = getpass.getpass('enter your last password please: ')
+                new_password = getpass.getpass('enter your new password please: ')
+                conferm_new_password = getpass.getpass('confirm your password please: ')
                 User.changepassword(username,last_password,new_password,conferm_new_password)
 
             elif operaton_3 == '4':
