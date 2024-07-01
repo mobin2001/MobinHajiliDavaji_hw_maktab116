@@ -1,7 +1,7 @@
 def armstrong(x):
     yield x ** 3
 
-my_num = '371'
+my_num = '152'
 
 sum = 0
 
