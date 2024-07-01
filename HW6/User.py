@@ -1,4 +1,6 @@
 import uuid
+import hashlib
+
 
 class User:
 
@@ -47,12 +49,13 @@ class User:
             cls.phonenumber = None
         else:
             cls.phonenumber = phone
-        cls.users_dict[name] = [passwd,phone,str(uuid.uuid5(uuid.NAMESPACE_DNS,name))]
+        
+        cls.users_dict[name] = [hashlib.sha256(passwd.encode('utf-8')).hexdigest(),phone,str(uuid.uuid5(uuid.NAMESPACE_DNS,name))]
 
     @classmethod
-    def check_user_pass(cls,name,pasw):
+    def check_user_pass(cls,name,passwd):
         if name in cls.users_dict:
-            if cls.users_dict[name][0] == pasw:
+            if cls.users_dict[name][0] == hashlib.sha256(passwd.encode('utf-8')).hexdigest():
                 return True
             else:
                 return False
@@ -60,14 +63,17 @@ class User:
     
     @classmethod
     def print_user_info(cls,name):
-        return ((name,cls.users_dict[name][1] , cls.users_dict[name][2]).__str__())
+        return f"your username:{name}\nyour phone number: {cls.users_dict[name][1]}\nyour Id = {cls.users_dict[name][2]}"
     
     @classmethod
     def rename(cls,prevusername,username,phone):
         
         if username not in cls.users_dict:
             cls.users_dict[username] = cls.users_dict.pop(prevusername)
-            cls.users_dict[username][1] = phone
+            if phone == '':
+                pass
+            else:
+                cls.users_dict[username][1] = phone
         else:
             print('username is not confirmed')
 
@@ -98,9 +104,9 @@ class User:
         if not any(char in SpecialSym for char in passwd):
             return print('Password should have at least one of the symbols $@#')
             
-        if User.users_dict[username][0] == prev_pass:
+        if User.users_dict[username][0] == hashlib.sha256(prev_pass.encode('utf-8')).hexdigest():
             if passwd == confirm_new_pass:
-                User.users_dict[username][0] = passwd
+                User.users_dict[username][0] = hashlib.sha256(passwd.encode('utf-8')).hexdigest()
             else:
                 print('new_password not match with confirm')
         else:
@@ -112,7 +118,7 @@ while True:
     
     if operaton == '1':
         info = input("enter Username and passpord please(password at least 4 char): ").split()
-        phone_number = input("please enter your phone number: ")
+        phone_number = input("please enter your phone number(optional): ")
         User.get_info(info[0],info[1],phone_number)
 
     elif operaton == '2':
@@ -126,8 +132,9 @@ while True:
                 print(User.print_user_info(user_info[0]))
                 
             elif operaton_3 == '2':
-                new_info = input("enter your new username and phonenumber: ").split()
-                User.rename(info[0],new_info[0],new_info[1])
+                new_info = input("enter your new username: ")
+                phone = input("please enter your phone number(optional): ")
+                User.rename(info[0],new_info,phone)
 
             elif operaton_3 == '3':
                 last_password = input("enter your last password: ")
@@ -149,6 +156,3 @@ while True:
 
     elif operaton != '1' or operaton != '0':
         print('wrong input!!!')
-
-print(User.users_dict)
-
