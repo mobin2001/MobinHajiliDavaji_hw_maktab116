@@ -1,24 +1,25 @@
 import uuid
 import hashlib
-
+import getpass
 
 class User:
 
     users_dict = {}
 
-    def __init__(self,user_name,password,phone_number):
+    def __init__(self,user_name,password,phone_number,id):
         self.__password = password
         self.username = user_name
         self.phonenumber = phone_number
+        self.id= id
 
     @classmethod
     def get_info(cls,name,passwd,phone):
         SpecialSym =['$', '@', '#', '%']
         val = True
-        if name != '':
+        if name != '' and name not in cls.users_dict:
             cls.username = name
         else:
-            return print('error name value is empty')
+            return print('error name value is empty or avalible')
         if len(passwd) < 6:
             return print('length should be at least 6')
             val = False
@@ -49,6 +50,7 @@ class User:
             cls.phonenumber = None
         else:
             cls.phonenumber = phone
+        cls.id = str(uuid.uuid5(uuid.NAMESPACE_DNS,name))
         
         cls.users_dict[name] = [hashlib.sha256(passwd.encode('utf-8')).hexdigest(),phone,str(uuid.uuid5(uuid.NAMESPACE_DNS,name))]
 
@@ -114,33 +116,36 @@ class User:
         
 
 while True:
+
     operaton = input("enter 0 for Exit and 1 for signup 2 for sigh in : ")
     
     if operaton == '1':
-        info = input("enter Username and passpord please(password at least 4 char): ").split()
+        info_username = input("enter Username please: ")
+        info_password = input("enter password please(at least 6 char): ")
         phone_number = input("please enter your phone number(optional): ")
-        User.get_info(info[0],info[1],phone_number)
+        User.get_info(info_username,info_password,phone_number)
 
     elif operaton == '2':
-        user_info = input('enter username and password for sigh in: ').split()
-        operaton_2 =  User.check_user_pass(user_info[0],user_info[1])
+        username = input('enter username for log in please: ')
+        password = input('enter your password for log in please:')
+        operaton_2 =  User.check_user_pass(username,password)
 
         if operaton_2 == True:
             operaton_3 = input('1 for print info 2 for rename 3 for change password 4 for back to menu: ')
 
             if operaton_3 == '1':
-                print(User.print_user_info(user_info[0]))
+                print(User.print_user_info(username))
                 
             elif operaton_3 == '2':
-                new_info = input("enter your new username: ")
+                new_username = input("enter your new username: ")
                 phone = input("please enter your phone number(optional): ")
-                User.rename(info[0],new_info,phone)
+                User.rename(username,new_username,phone)
 
             elif operaton_3 == '3':
                 last_password = input("enter your last password: ")
                 new_password = input("enter new pass:")
                 conferm_new_password = input("confirm password: ")
-                User.changepassword(user_info[0],last_password,new_password,conferm_new_password)
+                User.changepassword(username,last_password,new_password,conferm_new_password)
 
             elif operaton_3 == '4':
                 pass

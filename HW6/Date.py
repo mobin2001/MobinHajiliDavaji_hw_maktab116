@@ -29,8 +29,8 @@ class Date:
         today = list(map(int,str(Date.date).split('-')))
         return Gregorian(today[0],today[1],today[2]).to_hijri()
 
-Date.from_string('11-09-2014')
-Date.is_valid_date('13-112-2014')
+Date.from_string('08-05-2021')
+Date.is_valid_date('11-09-2014')
 print(Date.to_shamsi())
 print(Date.to_ghamari())
 
