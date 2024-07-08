@@ -1,20 +1,19 @@
 import exceptions
 import hashlib
 
-
-
 class Authenticator:
 
     users = {}
 
     def __init__(self):
         pass
-        
+    
     def add_user(self,name,passwd):
         
-        if name != '' and name not in self.users:
+        if name not in self.users:
 
             self.username = name
+
         else:
 
             raise exceptions.UsernameAlreadyExists()
@@ -23,13 +22,11 @@ class Authenticator:
 
             raise exceptions.PasswordTooShort()
         
-        else:
-
-            self.__password = passwd
-
+        self.__password = passwd
+        print('Acount created')
         self.users[name] = hashlib.sha256(passwd.encode('utf-8')).hexdigest()
 
-    
+
     def login(self,name,passwd):
 
         if name in self.users:
@@ -39,11 +36,11 @@ class Authenticator:
                 print('User logged in')
                 self.is_logged_in = True
                 
-            
             else:
 
                 raise exceptions.InvalidPassword()
         else:
+
             raise exceptions.InvalidUsername()
         
 
