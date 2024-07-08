@@ -15,36 +15,35 @@ class User:
     @classmethod
     def get_info(cls,name,passwd,phone):
         SpecialSym =['$', '@', '#', '%']
-        val = True
+        
         if name != '' and name not in cls.users_dict:
             cls.username = name
         else:
             return print('Error name value is empty or Its already exists')
         if len(passwd) < 6:
             return print('length should be at least 6')
-            val = False
+            
          
         if len(passwd) > 20:
             return print('length should be not be greater than 8')
-            val = False
+            
          
         if not any(char.isdigit() for char in passwd):
             return print('Password should have at least one numeral')
-            val = False
+            
          
         if not any(char.isupper() for char in passwd):
             return print('Password should have at least one uppercase letter')
-            val = False
+            
          
         if not any(char.islower() for char in passwd):
             return print('Password should have at least one lowercase letter')
-            val = False
+            
          
         if not any(char in SpecialSym for char in passwd):
             return print('Password should have at least one of the symbols $@#')
-            val = False
-        if val:
-            cls.__password = passwd
+            
+        cls.__password = passwd
         
         if phone == '':
             cls.phonenumber = None
@@ -72,12 +71,14 @@ class User:
         
         if username not in cls.users_dict:
             cls.users_dict[username] = cls.users_dict.pop(prevusername)
+            print('username and id changed')
             if phone == '':
                 pass
             else:
                 cls.users_dict[username][1] = phone
         else:
-            print('username is not confirmed')
+            print('username is already exist')
+        
 
     @staticmethod
     def changepassword(username,prev_pass,passwd,confirm_new_pass):
@@ -114,6 +115,7 @@ class User:
                 print('new_password not match with confirm')
         else:
             print('last password is not correct')
+        print('password was changed')
 
 while True:
 
