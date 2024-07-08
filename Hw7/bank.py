@@ -1,5 +1,7 @@
 class Bankaccount:
+
     bank_accounts = {}
+
     def __init__(self,name,account_balance) -> None:
         self.name = name
         self.__minimum_account_balance = 50000
@@ -43,12 +45,12 @@ class Bankaccount:
         print(f"Account name = {self.name}\nAccount balance = {self.account_balance}")
 
 u1 = Bankaccount('Mobin',1000000)
-u2 = Bankaccount('nima',200000)
+u2 = Bankaccount('Nima',200000)
 
 u1.harvest(200000)
 u1.deposit(50000)
 
 
-u1.transfer(u2,300000)
+u1.transfer(u2,700000)
 u1.display()
 u2.display()
