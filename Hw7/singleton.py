@@ -1,4 +1,4 @@
-class Singleton(object):
+class Singleton:
 
     def __new__(cls):
         pass

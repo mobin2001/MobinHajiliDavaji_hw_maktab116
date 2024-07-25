@@ -46,11 +46,11 @@ class Bankaccount:
 
 u1 = Bankaccount('Mobin',1000000)
 u2 = Bankaccount('Nima',200000)
-
-u1.harvest(200000)
+u3 = Bankaccount('Ali',1000)
+u1.harvest(2000000)
 u1.deposit(50000)
 
 
-u1.transfer(u2,700000)
+u1.transfer(u2,900000)
 u1.display()
 u2.display()

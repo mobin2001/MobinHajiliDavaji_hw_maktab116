@@ -16,6 +16,7 @@ u1.login(input('Enter your username for log in: '),getpass.getpass('Enter your p
 u1.is_logged_inn()
 
 u2 = User()
+u2.add_user(input('Please enter username for sign up: '),getpass.getpass('Please enter password(at least 8 char): '))
 u2.is_logged_inn()
 
 # while True:
