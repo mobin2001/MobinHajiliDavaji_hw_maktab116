@@ -1,0 +1,4 @@
+Grep, short for “global regular expression print”,
+is a command used for searching and matching text patterns in files
+contained in the regular expressions. Furthermore,
+the command comes pre-installed in every Linux distribution.

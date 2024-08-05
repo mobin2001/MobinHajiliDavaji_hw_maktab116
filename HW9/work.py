@@ -119,7 +119,6 @@ class User:
         self.timetype = time
         self.skills = []
         self.view_dict = {}
-        self.score = []
         self.salary = int(salary)
         self.id = User.user_id
         User.user_id += 1
@@ -208,6 +207,7 @@ def view(user_id: str, job_id: str) -> None:
 
 def get_job(user_id: int) -> str:
     """function for calculating job scores for user with given id"""
+    user_score = []
     user_id = int(user_id)
     user: object = User.get(user_id)
     for job in Job.objects:
@@ -252,9 +252,9 @@ def get_job(user_id: int) -> str:
         score += floor(1000 / (max(abs(user.salary - job_obj.salary), 1)))
         score = (score * 1000) + job
         job_score = job, score
-        user.score.append(job_score)
+        user_score.append(job_score)
 
-    sorted_user_scores = sorted(user.score, key=lambda x: x[1], reverse=True)
+    sorted_user_scores = sorted(user_score, key=lambda x: x[1], reverse=True)
 
     string_sorted_user_scores = ""
 
