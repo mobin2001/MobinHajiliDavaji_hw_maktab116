@@ -1,0 +1,15 @@
+log time:2024-08-17 20:26:54.035972 operation : add_income
+log time:2024-08-17 20:27:48.790293 operation : frequent_transaction
+log time:2024-08-17 20:32:19.712343 operation : save
+exception raise time:2024-08-17 20:37:09.409639 operation : <class 'function'>
+exception raise time:2024-08-17 20:37:09.478824 operation : <class 'function'>
+log time:2024-08-17 21:46:47.057035 operation : frequent_transaction
+exception raise time:2024-08-18 11:10:58.391123
+exception raise time:2024-08-19 22:12:56.779204
+exception raise time:2024-08-19 22:13:47.841336
+log time:2024-08-19 22:14:40.433610 operation : save
+log time:2024-08-19 22:15:55.604204 operation : add_income
+log time:2024-08-19 22:17:31.506487 operation : add_cost
+log time:2024-08-19 22:18:20.892424 operation : frequent_transaction
+exception raise time:2024-08-19 22:18:58.279101
+log time:2024-08-19 22:19:42.026963 operation : add_income

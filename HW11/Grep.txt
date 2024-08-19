@@ -3,6 +3,12 @@ is a command used for searching and matching text patterns in files
 contained in the regular expressions. Furthermore,
 the command comes pre-installed in every Linux distribution.
 
+Grep is a useful command to search for matching patterns in a file.
+grep is short for "global regular expression print".
+If you are a system admin who needs to scrape through log files or
+a developer trying to find certain occurrences in the code file,
+then grep is a powerful command to use.
+
 The pipe command in Linux, represented by the vertical bar symbol '|',
 is an essential tool for command-line enthusiasts and professionals alike.
 The primary purpose of the pipe command is to connect the output of one
