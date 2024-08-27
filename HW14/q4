@@ -1,0 +1,42 @@
+-- SELECT title, release_year, rental_rate
+-- FROM film
+-- WHERE release_year = 2006 AND rental_rate >= 4;
+
+-- SELECT title,length
+-- FROM film
+-- ORDER BY length ASC
+-- LIMIT 10;
+
+-- SELECT country, COUNT(*) AS total_customers
+-- FROM customer
+-- JOIN address USING(address_id)
+-- JOIN city USING(city_id)
+-- JOIN country USING(country_id)
+-- GROUP BY country
+-- ORDER BY country;
+
+-- SELECT film.title, AVG(payment.amount) AS avg_rental_rate, SUM(rental.return_date - rental.rental_date) AS total_rental_duration
+-- FROM film
+-- JOIN inventory USING(film_id)
+-- JOIN rental USING(inventory_id)
+-- JOIN payment USING(rental_id)
+-- GROUP BY film.title
+-- ORDER BY film.title;
+
+-- SELECT customer.first_name, customer.last_name, COUNT(*) AS total_rentals
+-- FROM customer
+-- JOIN rental USING(customer_id)
+-- GROUP BY customer.customer_id
+-- ORDER BY total_rentals DESC
+-- LIMIT 10;
+
+-- SELECT customer.first_name,customer.last_name
+-- FROM customer
+-- JOIN address USING(address_id)
+-- JOIN city USING(city_id)
+-- JOIN country USING(country_id)
+-- WHERE country = 'United States' AND first_name LIKE 'A%';
+
+-- SELECT title,rental_duration,replacement_cost
+-- FROM film
+-- WHERE rental_duration > 5 AND replacement_cost < 15;

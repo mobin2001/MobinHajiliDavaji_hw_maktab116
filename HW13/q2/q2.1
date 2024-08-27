@@ -3,3 +3,57 @@ Unlike HTTP/1.1, HTTP/2 uses a binary framing layer.
 This layer encapsulates messages – converted to its binary equivalent – while making sure that its
 HTTP semantics (method details, header information, etc.) remain untamed.
 This feature of HTTP/2 enables gRPC to use lesser resources.
+
+
+
+
+Host, 	req
+The domain name of the server
+
+Referer, req
+This is the address of the previous web page from which a link to the currently requested page was followed.
+
+Accept-Encoding, 	req
+List of acceptable encodings. See HTTP compression.
+
+Content-type, 	res
+ The Media type of the body of the request (used with POST and PUT requests).
+
+Content-Length , req
+ 	The length of the response body in octets (8-bit bytes)
+
+Content-Range, res
+Where in a full body message this partial message belongs
+
+Location,		res
+Used in redirection, or when a new resource has been created. 
+
+Last-Modified, res
+The last modified date for the requested object (in "HTTP-date" format as defined by RFC 9110)
+
+Cache-Control 	req
+Used to specify directives that must be obeyed by all caching mechanisms along the request-response chain.
+
+
+
+
+
+
+300 Multiple Choices
+    Indicates multiple options for the resource from which the client may choose (via agent-driven content negotiation). For example, this code could be used to present multiple video format options, to list files with different filename extensions, or to suggest word-sense disambiguation.
+301 Moved Permanently
+    This and all future requests should be directed to the given URI.
+302 Found (Previously "Moved temporarily")
+    Tells the client to look at (browse to) another URL. The HTTP/1.0 specification required the client to perform a temporary redirect with the same method (the original describing phrase was "Moved Temporarily"),[9] but popular browsers implemented 302 redirects by changing the method to GET. Therefore, HTTP/1.1 added status codes 303 and 307 to distinguish between the two behaviours.[1]: §15.4 
+303 See Other (since HTTP/1.1)
+    The response to the request can be found under another URI using the GET method. When received in response to a POST (or PUT/DELETE), the client should presume that the server has received the data and should issue a new GET request to the given URI.
+304 Not Modified
+    Indicates that the resource has not been modified since the version specified by the request headers If-Modified-Since or If-None-Match. In such case, there is no need to retransmit the resource since the client still has a previously-downloaded copy.
+305 Use Proxy (since HTTP/1.1)
+    The requested resource is available only through a proxy, the address for which is provided in the response. For security reasons, many HTTP clients (such as Mozilla Firefox and Internet Explorer) do not obey this status code.[10]
+306 Switch Proxy
+    No longer used. Originally meant "Subsequent requests should use the specified proxy."
+307 Temporary Redirect (since HTTP/1.1)
+    In this case, the request should be repeated with another URI; however, future requests should still use the original URI. In contrast to how 302 was historically implemented, the request method is not allowed to be changed when reissuing the original request. For example, a POST request should be repeated using another POST request.
+308 Permanent Redirect
+    This and all future requests should be directed to the given URI. 308 parallel the behaviour of 301, but does not allow the HTTP method to change. So, for example, submitting a form to a permanently redirected resource may continue smoothly.
