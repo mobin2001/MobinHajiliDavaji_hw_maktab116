@@ -130,7 +130,6 @@ class AccountManagement:
             "/home/mobin/HW/MobinHajiliDavaji_hw_maktab116/HW8/accounts", "rb"
         ) as fin:
             data = pickle.load(fin)
-            print(type(data))
             data.pop(account_number)
             data.update({account_number: account})
             with open(
